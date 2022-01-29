@@ -1,0 +1,27 @@
+.footer {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-flow: row wrap;
+}
+
+.footer-left {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 0 10px 10px;
+}
+
+.footer-right {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 10px 10px 0;
+    & > span {
+        color: #fff;
+    }
+}

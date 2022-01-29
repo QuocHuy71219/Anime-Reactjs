@@ -1,0 +1,18 @@
+.nav {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 100px; 
+    background-image: linear-gradient(to right, rgba(42,52,60,1) 20%, rgba(48,47,57,1) 51%, rgba(55,45,54,1) 100%);
+    &__link {
+        text-decoration: none;
+        color: #fff;
+        align-items: center;
+        padding-right: 20px;
+        font-size: larger;
+    };
+
+    &__link:hover {
+        //color: #4EB1BA;
+        color: red;
+    }
+};

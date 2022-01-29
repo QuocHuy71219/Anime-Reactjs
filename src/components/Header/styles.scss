@@ -1,0 +1,9 @@
+@mixin mobi {
+    @media screen and (max-width: 768px) {
+       @content;
+    }
+}
+
+.bar {
+    background-color: #000;
+};

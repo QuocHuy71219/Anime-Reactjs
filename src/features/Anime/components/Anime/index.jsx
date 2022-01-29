@@ -26,6 +26,7 @@ function Anime({ anime }) {
     <div className="anime" onClick={handleChangeUrl}>
       <div className="anime__img">
         <img src={anime.cover_image} alt={anime.titles.en} />
+        <span>Tập {anime.episodes_count}</span>
       </div>
       <div className="anime__title">{anime.titles.en}</div>
     </div>

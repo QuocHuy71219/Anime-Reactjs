@@ -26,6 +26,7 @@ function AnimeTop({ anime }) {
     <div className="top-anime" onClick={handleChangeUrl}>
       <div className="top-anime__img">
         <img src={anime.cover_image} alt={anime.titles.en} />
+        <span>Tập {anime.episodes_count}</span>
       </div>
       <div className="top-anime__title">{anime.titles.en}</div>
     </div>

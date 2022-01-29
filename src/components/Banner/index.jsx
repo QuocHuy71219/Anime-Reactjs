@@ -40,6 +40,7 @@ function Banner(props) {
               <div className="banner" onClick={handleChangeUrl}>
                 <div className="banner__img">
                   <img src={anime.cover_image} alt={anime.titles.en} />
+                  <span>Tập {anime.episodes_count}</span>
                 </div>
                 <div className="banner__title">{anime.titles.en}</div>
               </div>

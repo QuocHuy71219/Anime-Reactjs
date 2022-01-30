@@ -1,0 +1,12 @@
+ul.list-genres {
+    list-style-type: none;
+    background: black;
+    color: white;
+    column-count: 3;
+    & > li {
+        cursor: pointer;
+        &:hover {
+            color: red;
+        }
+    }
+}

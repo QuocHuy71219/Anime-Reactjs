@@ -26,7 +26,7 @@ const animeAPI = {
   },
 
   getListAnimeWithGenres(genres) {
-    const url = `/anime?genres=${genres}&nsfw=false`;
+    const url = `/anime?genres=${genres}&nsfw=true`;
     return axiosClientAnime.get(url);
   },
 

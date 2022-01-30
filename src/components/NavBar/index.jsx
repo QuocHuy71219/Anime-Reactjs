@@ -12,7 +12,7 @@ function NavBar(props) {
         <Button color="inherit">Trang Chủ</Button>
       </NavLink>
 
-      <NavLink className="nav__link" to="/">
+      <NavLink className="nav__link" to="/genres">
         <Button color="inherit">Thể Loại</Button>
       </NavLink>
 

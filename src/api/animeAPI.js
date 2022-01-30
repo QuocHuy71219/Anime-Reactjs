@@ -20,10 +20,14 @@ const animeAPI = {
     return axiosClientAnime.get(url);
   },
 
-  async getGender() {
-    const url = await axiosClientAnime.get(`/resources/1.0/0`);
-    let data = url?.data?.data?.genres;
-    return axiosClientAnime.get(data);
+  getGenres() {
+    const url = `/resources/1.0/0`;
+    return axiosClientAnime.get(url);
+  },
+
+  getListAnimeWithGenres(genres) {
+    const url = `/anime?genres=${genres}&nsfw=false`;
+    return axiosClientAnime.get(url);
   },
 
   async getListAnimeWithGender(gender, per_page = 20, page = 1) {

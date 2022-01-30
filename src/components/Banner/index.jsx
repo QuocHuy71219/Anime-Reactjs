@@ -1,3 +1,4 @@
+import { PlayCircleOutline } from '@material-ui/icons';
 import animeAPI from 'api/animeAPI';
 import SwiperBanner from 'components/SwiperBanner';
 import React, { useEffect, useState } from 'react';
@@ -41,6 +42,9 @@ function Banner(props) {
                 <div className="banner__img">
                   <img src={anime.cover_image} alt={anime.titles.en} />
                   <span>Tập {anime.episodes_count}</span>
+                  <div className="banner__img--icon">
+                    <PlayCircleOutline style={{ fontSize: '100px' }} />
+                  </div>
                 </div>
                 <div className="banner__title">{anime.titles.en}</div>
               </div>

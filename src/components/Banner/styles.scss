@@ -28,8 +28,12 @@
                 opacity: 0.5;
             }
             &:hover ~ span {
-                background: linear-gradient(to left ,#1CB5E0 0%, #000046 100%, #8E2DE2 100%);
+                background-size: 100% 200%;
+                background-image: linear-gradient(to left ,#1CB5E0 0%, #000046 100%, #8E2DE2 100%);
             }
+            &:hover ~ .banner__img--icon  {
+                display: block;
+            }  
         }
         & > span {
             top: 5px;
@@ -42,6 +46,17 @@
             padding: 3px 5px 1px;
             border-radius: 5px; 
             box-shadow: rgba(0,0,0,0.75) 0px 3px 10px ;
+            //transition: background-image 0.5 ease;
+            transition: all .7s ease;
+        }
+        &--icon {
+            position: absolute; 
+            z-index: 1; 
+            right: 80px; 
+            top: 130px; 
+            display: none;
+            pointer-events: none;
+             //transition: all .5s ease;
         }
     }
     

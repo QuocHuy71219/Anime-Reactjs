@@ -1,4 +1,5 @@
 //import { Box, Typography } from '@material-ui/core';
+import { PlayCircleOutline } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -27,6 +28,9 @@ function Anime({ anime }) {
       <div className="anime__img">
         <img src={anime.cover_image} alt={anime.titles.en} />
         <span>Tập {anime.episodes_count}</span>
+        <div className="anime__img--icon">
+          <PlayCircleOutline style={{ fontSize: '60px' }} />
+        </div>
       </div>
       <div className="anime__title">{anime.titles.en}</div>
     </div>

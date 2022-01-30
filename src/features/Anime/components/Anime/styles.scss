@@ -8,7 +8,7 @@
     height: 200px;
     overflow: hidden;
         & > img {      
-            transition: transform .5s ease;  
+            transition: all .5s ease;  
                width: 200px;
               height: 200px;
             border-radius: 0.5rem;
@@ -18,8 +18,12 @@
                 opacity: 0.8;
             }
             &:hover ~ span {
-                background: linear-gradient(to left ,#1CB5E0 0%, #000046 100%, #8E2DE2 100%);
+                background-size: 100% 200%;
+                background-image: linear-gradient(to left ,#1CB5E0 0%, #000046 100%, #8E2DE2 100%);
             }
+            &:hover ~ .anime__img--icon  {
+                display: block;
+            }  
         }
         & > span {
             top: 5px;
@@ -32,6 +36,16 @@
             padding: 3px 5px 1px;
             border-radius: 5px; 
             box-shadow: rgba(0,0,0,0.75) 0px 3px 10px ;
+            transition:  all .7s ease;
+        }
+        &--icon {
+            position: absolute; 
+            z-index: 1; 
+            right: 100px; 
+            top: 70px; 
+            display: none;
+            pointer-events: none;
+             //transition: all .5s ease;
         }
        
     }

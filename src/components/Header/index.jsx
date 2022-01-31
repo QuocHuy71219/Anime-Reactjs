@@ -152,6 +152,7 @@ export default function Header() {
 
   const handleChangeUrl = (e) => {
     navigate(`/search?q=${value}`);
+    setValue('');
   };
 
   return (
@@ -173,12 +174,14 @@ export default function Header() {
               <Search color="secondary" />
             </div>
             <InputBase
+              id="name"
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               onChange={handleGetValue}
+              value={value}
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>

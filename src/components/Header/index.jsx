@@ -156,6 +156,12 @@ export default function Header() {
     setValue('');
   };
 
+  const keyPress = (e) => {
+    if (e.keyCode === 13) {
+      handleChangeUrl();
+    }
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appbar}>
@@ -184,6 +190,7 @@ export default function Header() {
               onChange={handleGetValue}
               value={value}
               inputProps={{ 'aria-label': 'search' }}
+              onKeyDown={keyPress}
             />
           </div>
           {/* </div> */}

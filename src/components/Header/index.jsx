@@ -151,6 +151,7 @@ export default function Header() {
   };
 
   const handleChangeUrl = (e) => {
+    if (!value) return;
     navigate(`/search?q=${value}`);
     setValue('');
   };

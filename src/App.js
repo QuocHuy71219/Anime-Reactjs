@@ -11,6 +11,7 @@ import AnimeWatch from 'features/AnimeWatch/components/AnimeWatch';
 import AnimeWatchFutures from 'features/AnimeWatch';
 import AnimeTopFutures from 'features/AnimeTop';
 import AnimeGenresFutures from 'features/AnimeGenres';
+import AnimeSearchFutures from 'features/AnimeSearch';
 //import Comment from 'features/Comment/components/Comment';
 //import WatchFutures from 'features/Watch';
 //import EpisodeFutures from 'features/Episode';
@@ -33,6 +34,8 @@ function App() {
         <Route path="genres-anime" element={<AnimeGenresFutures />}>
           <Route path=":genres" element={<AnimeGenresFutures />} />
         </Route>
+
+        <Route path="search" element={<AnimeSearchFutures />} />
 
         <Route path="episode" element={<AnimeWatchFutures />}>
           <Route path=":episodeId" element={<AnimeWatch />} />

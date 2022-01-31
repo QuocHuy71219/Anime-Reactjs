@@ -63,6 +63,11 @@ const animeAPI = {
     return axiosClientAnime.get(data);
   },
 
+  searchAnime(q) {
+    const url = `/anime?per_page=50&page=1&title=${encodeURIComponent(q)}`;
+    return axiosClientAnime.get(url);
+  },
+
   //   get(id) {
   //     const url = `/products/${id}`;
   //     return axiosClient.get(url);

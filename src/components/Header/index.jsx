@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import Login from '../../features/Auth/components/Login';
 import Register from '../../features/Auth/components/Register';
 import { logout } from '../../features/Auth/userSlice';
+import { useNavigate } from 'react-router-dom';
 import './styles.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -79,10 +80,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
-    pointerEvents: 'none',
+    pointerEvents: 'auto',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    cursor: 'pointer',
+    zIndex: '1',
   },
 
   inputRoot: {
@@ -110,6 +113,8 @@ const MODE = {
 };
 
 export default function Header() {
+  const navigate = useNavigate();
+  const classes = useStyles();
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
 
@@ -117,6 +122,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [value, setValue] = useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -140,7 +146,13 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  const classes = useStyles();
+  const handleGetValue = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleChangeUrl = (e) => {
+    navigate(`/search?q=${value}`);
+  };
 
   return (
     <div className={classes.root}>
@@ -155,21 +167,22 @@ export default function Header() {
             </Link>
           </Typography>
 
-          <div className={classes.loginmobi}>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <Search color="secondary" />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
+          {/* <div className={classes.loginmobi}> */}
+          <div className={classes.search}>
+            <div className={classes.searchIcon} onClick={handleChangeUrl}>
+              <Search color="secondary" />
             </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              onChange={handleGetValue}
+              inputProps={{ 'aria-label': 'search' }}
+            />
           </div>
+          {/* </div> */}
 
           <div className={classes.loginmobi}>
             {!isLoggedIn && (

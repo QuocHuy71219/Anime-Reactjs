@@ -1,0 +1,60 @@
+.search-anime {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 150px;
+    margin-right: 45px;
+
+    &__img {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        & > img {
+            transition: transform 0.5s ease;
+            width: 200px;
+             height: 200px;
+            border-radius: 0.5rem;
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.3);
+                opacity: 0.5;
+            }
+            &:hover ~ span {
+                background-size: 100% 200%;
+                background-image: linear-gradient(to left ,#1CB5E0 0%, #000046 100%, #8E2DE2 100%);
+            }
+            &:hover ~ .search-anime__img--icon  {
+                display: block;
+            }  
+        } 
+            & > span {
+                top: 5px;
+                left: 10px;
+                z-index: 9;
+                position: absolute;
+                background-size: 200% 100%;
+                background-image: linear-gradient(to right, #8E2DE2 0%, #000046 51%, #1CB5E0 100%);
+                color:white;  
+                padding: 3px 5px 1px;
+                border-radius: 5px; 
+                box-shadow: rgba(0,0,0,0.75) 0px 3px 10px ;
+                transition: all .7s ease;
+            }
+            &--icon {
+                position: absolute; 
+                z-index: 1; 
+                right: 70px; 
+                top: 70px; 
+                display: none;
+                pointer-events: none;
+                 //transition: all .5s ease;
+            }
+        }
+
+    &__title {
+        font-weight: bold;
+        color: #fff;
+    }
+};

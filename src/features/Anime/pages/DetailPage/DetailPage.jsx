@@ -6,9 +6,10 @@ import EpisodeFutures from 'features/Episode';
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useParams } from 'react-router-dom';
 //import imgBanner from '../../../asset/img/banner.jpg';
-import imgBanner from '../../../asset/img/banner.jpg';
+import imgBanner from 'asset/img/banner.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComment } from 'features/Comment/commentSlice';
+import './styles.scss';
 
 DetailPage.propTypes = {};
 
@@ -37,7 +38,7 @@ function DetailPage(props) {
 
   return (
     <div style={{ color: 'white' }}>
-      <div style={{ width: '100%', height: '200px' }}>
+      <div style={{ width: '100%', height: '200px' }} className="anime-detail__banner">
         <img
           src={anime?.banner_image ? anime?.banner_image : imgBanner}
           alt="404"
@@ -45,7 +46,7 @@ function DetailPage(props) {
         />
       </div>
 
-      <div style={{ display: 'flex', flexFlow: 'row nowrap' }}>
+      <div style={{ display: 'flex', flexFlow: 'column nowrap' }} className="anime-detail">
         <div style={{ margin: '100px 0 30px 100px' }}>
           <img
             src={anime?.cover_image}
@@ -54,9 +55,15 @@ function DetailPage(props) {
           />
           <div style={{ fontSize: '20px' }}>{anime?.titles.en}</div>
         </div>
-        <div style={{ margin: '100px 100px 0 50px ' }}>
-          <div style={{ fontSize: '50px', fontWeight: 'bold' }}>{anime?.titles.en}</div>
-          <div style={{ fontSize: '20px' }} dangerouslySetInnerHTML={{ __html: anime?.descriptions.en }}></div>
+        <div style={{ margin: '100px 100px 0 50px ' }} className="anime-description">
+          <div style={{ fontSize: '50px', fontWeight: 'bold' }} className="anime-description__title">
+            {anime?.titles.en}
+          </div>
+          <div
+            style={{ fontSize: '20px' }}
+            className="anime-description__content"
+            dangerouslySetInnerHTML={{ __html: anime?.descriptions.en }}
+          ></div>
         </div>
       </div>
       <Routes>

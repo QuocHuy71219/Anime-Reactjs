@@ -1,0 +1,11 @@
+@mixin mobi {
+    @media screen and (min-width: 1024px) {
+       @content;
+    }
+  }
+.anime-detail {
+        @include mobi {
+        display: flex !important;
+        flex-flow: row nowrap !important;
+        }
+}

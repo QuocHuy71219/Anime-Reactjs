@@ -5,7 +5,7 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import NavBar from 'components/NavBar';
 //import AnimeFutures from 'features/Anime';
-import DetailPage from 'features/Anime/pages/DetailPage';
+import DetailPage from 'features/Anime/pages/DetailPage/DetailPage';
 import Home from 'components/Home';
 import AnimeWatch from 'features/AnimeWatch/components/AnimeWatch';
 import AnimeWatchFutures from 'features/AnimeWatch';

@@ -30,9 +30,10 @@ function AnimeSearchFutures(props) {
       })(),
     [q]
   );
+  const divStyle = { minHeight: 'calc(100vh - 36.5px - 64px - 87px)' };
 
   return (
-    <div>
+    <div style={divStyle}>
       <AnimeSearchList data={animeList} />
     </div>
   );

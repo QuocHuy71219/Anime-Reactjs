@@ -31,6 +31,20 @@ const SwiperCom = (props) => {
       navigation={true}
       className="mySwiper"
       lazy={true}
+      breakpoints={{
+        240: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 6,
+          spaceBetween: 0,
+        },
+      }}
     >
       {props.children}
     </Swiper>

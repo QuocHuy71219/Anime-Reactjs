@@ -7,7 +7,7 @@ import { alpha, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { AccountCircle, Close, Search } from '@material-ui/icons';
-import { Avatar } from '@mui/material';
+import { Avatar, Drawer } from '@mui/material';
 import logo from 'asset/img/logo1.png';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,10 +17,12 @@ import Register from '../../features/Auth/components/Register';
 import { logout } from '../../features/Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import './styles.scss';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: 'relative',
   },
 
   appbar: {
@@ -30,8 +32,23 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  menuButton1: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('xs')]: {
+      visibility: 'visible',
+      position: 'absolute',
+      right: '0',
+      color: 'white',
+    },
+    [theme.breakpoints.up('lg')]: {
+      visibility: 'hidden',
+    },
+  },
   title: {
     flexGrow: 1,
+    [theme.breakpoints.down('md')]: {
+      fontSize: '30px',
+    },
   },
   link: {
     //color: '#4EB1BA',
@@ -45,11 +62,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  loginmobi: {
+  searchmobi: {
     [theme.breakpoints.down('sm')]: {
       visibility: 'hidden',
-      padding: 0,
-      margin: 0,
+      padding: '0',
+      margin: '0',
+    },
+  },
+
+  loginmobi: {
+    [theme.breakpoints.down('sm')]: {
+      //fontSize: '20px',
+      padding: '0',
+      margin: '0',
+      position: 'absolute',
+      right: '0',
+      marginRight: '70px',
     },
   },
 
@@ -76,6 +104,23 @@ const useStyles = makeStyles((theme) => ({
     },
     border: '1px solid #ffea00',
   },
+
+  searchMobi: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+    border: '1px solid black',
+  },
+
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -90,6 +135,10 @@ const useStyles = makeStyles((theme) => ({
 
   inputRoot: {
     color: theme.palette.background.paper,
+  },
+
+  inputRootMobi: {
+    color: 'inherit',
   },
 
   inputInput: {
@@ -123,6 +172,7 @@ export default function Header() {
   const [mode, setMode] = useState(MODE.LOGIN);
   const [anchorEl, setAnchorEl] = useState(null);
   const [value, setValue] = useState('');
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -154,12 +204,21 @@ export default function Header() {
     if (!value) return;
     navigate(`/search?q=${value}`);
     setValue('');
+    //setOpenDrawer(false);
   };
 
   const keyPress = (e) => {
     if (e.keyCode === 13) {
       handleChangeUrl();
     }
+  };
+
+  const toggleDrawer = (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setOpenDrawer(!openDrawer);
   };
 
   return (
@@ -175,25 +234,50 @@ export default function Header() {
             </Link>
           </Typography>
 
-          {/* <div className={classes.loginmobi}> */}
-          <div className={classes.search}>
-            <div className={classes.searchIcon} onClick={handleChangeUrl}>
-              <Search color="secondary" />
+          <IconButton aria-label="open drawer" edge="start" onClick={toggleDrawer} className={classes.menuButton1}>
+            <MenuIcon />
+          </IconButton>
+
+          <Drawer anchor="left" open={openDrawer} onClose={toggleDrawer}>
+            <div style={{ fontSize: '20px', fontWeight: 'bold', padding: '5px' }}>Tìm Kiếm</div>
+            <div className={classes.searchMobi}>
+              <div className={classes.searchIcon} onClick={handleChangeUrl}>
+                <Search color="secondary" />
+              </div>
+              <InputBase
+                id="name"
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRootMobi,
+                  input: classes.inputInput,
+                }}
+                onChange={handleGetValue}
+                value={value}
+                inputProps={{ 'aria-label': 'search' }}
+                onKeyDown={keyPress}
+              />
             </div>
-            <InputBase
-              id="name"
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              onChange={handleGetValue}
-              value={value}
-              inputProps={{ 'aria-label': 'search' }}
-              onKeyDown={keyPress}
-            />
+          </Drawer>
+
+          <div className={classes.searchmobi}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon} onClick={handleChangeUrl}>
+                <Search color="secondary" />
+              </div>
+              <InputBase
+                id="name"
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                onChange={handleGetValue}
+                value={value}
+                inputProps={{ 'aria-label': 'search' }}
+                onKeyDown={keyPress}
+              />
+            </div>
           </div>
-          {/* </div> */}
 
           <div className={classes.loginmobi}>
             {!isLoggedIn && (

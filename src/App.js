@@ -12,12 +12,13 @@ import AnimeWatchFutures from 'features/AnimeWatch';
 import AnimeTopFutures from 'features/AnimeTop';
 import AnimeGenresFutures from 'features/AnimeGenres';
 import AnimeSearchFutures from 'features/AnimeSearch';
+import './App.scss';
 //import Comment from 'features/Comment/components/Comment';
 //import WatchFutures from 'features/Watch';
 //import EpisodeFutures from 'features/Episode';
 function App() {
   return (
-    <div className="App" style={{ backgroundColor: '#1f1f26' }}>
+    <div className="App">
       <Header />
       <NavBar />
       <Routes>

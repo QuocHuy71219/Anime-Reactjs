@@ -15,7 +15,6 @@ function TitleGenresFutures(props) {
         try {
           const data = await animeAPI.getGenres();
           const result = data.data.genres;
-          console.log(result);
           //result.sort((a, b) => b.score - a.score);
           setGenresList(result);
         } catch (error) {

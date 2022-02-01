@@ -33,11 +33,11 @@ const SwiperCom = (props) => {
       lazy={true}
       breakpoints={{
         240: {
-          slidesPerView: 2,
-          spaceBetween: 20,
+          slidesPerView: 1,
+          spaceBetween: 0,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 20,
         },
         1024: {

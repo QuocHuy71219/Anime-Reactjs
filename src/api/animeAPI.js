@@ -1,7 +1,7 @@
 import axiosClientAnime from './axiosClientAnime';
 const animeAPI = {
   getAnimelist(page = 1) {
-    const url = `/anime?sort_fields=score&sort_directions=-1&per_page=50&page=${page}`;
+    const url = `/anime?sort_fields=score&sort_directions=-1&per_page=18&page=${page}`;
     return axiosClientAnime.get(url);
   },
 

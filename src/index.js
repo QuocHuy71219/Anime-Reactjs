@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import store from './app/store';
+import Loading from 'components/Loading';
+const App = React.lazy(() => import('./App'));
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-          <App />
+          <Suspense fallback={<Loading />}>
+            <App />
+          </Suspense>
         </SnackbarProvider>
       </BrowserRouter>
     </Provider>

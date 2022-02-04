@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5",
     "node-sass": "^7.0.1",
     "video.js": "^7.17.0"
   }

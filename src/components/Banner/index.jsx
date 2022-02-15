@@ -15,8 +15,8 @@ function Banner(props) {
     () =>
       (async () => {
         try {
-          const data = await animeAPI.getAnimeRamdom(12);
-          const result = data.data;
+          const data = await animeAPI.getAnimelist(12);
+          const result = data.data.documents;
           setAnimeList(result);
         } catch (error) {
           console.log('Failed to fetch anime list: ', error);

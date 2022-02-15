@@ -40,8 +40,8 @@ function ListPage(props) {
     () =>
       (async () => {
         try {
-          const data = await animeAPI.getAnimeRamdom(20);
-          const result = data.data;
+          const data = await animeAPI.getAnimelist(20);
+          const result = data.data.documents;
           setAnimeList(result);
         } catch (error) {
           console.log('Failed to fetch anime list: ', error);

@@ -12,11 +12,11 @@ function TitleGenres({ genres = '', onclick = null }) {
   const navigate = useNavigate();
 
   const handleChangeUrl = () => {
-    navigate(`/genres-anime/${genres}`);
+    navigate(`/genres-anime/${genres.name}`, { state: { id: genres.mal_id } });
     onclick();
   };
 
-  return <span onClick={handleChangeUrl}>{genres}</span>;
+  return <span onClick={handleChangeUrl}>{genres.name}</span>;
 }
 
 export default TitleGenres;

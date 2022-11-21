@@ -19,6 +19,8 @@ function ListPage(props) {
   //const classes = useStyles();
 
   const [animeList, setAnimeList] = useState([]);
+  const [animeList1, setAnimeList1] = useState([]);
+  const [animeList2, setAnimeList2] = useState([]);
 
   //const [loading, setLoading] = useState(true);
   // const [filters, setFilters] = useState(() => ({
@@ -40,9 +42,17 @@ function ListPage(props) {
     () =>
       (async () => {
         try {
-          const data = await animeAPI.getAnimelist(20);
-          const result = data.data.documents;
+          const [data, data1, data2] = await Promise.all([
+            animeAPI.getAnimelist(5, 20),
+            animeAPI.getAnimelist(10, 20),
+            animeAPI.getAnimelist(15, 20),
+          ]);
+          const result = data.data;
+          const result1 = data1.data;
+          const result2 = data2.data;
           setAnimeList(result);
+          setAnimeList1(result1);
+          setAnimeList2(result2);
         } catch (error) {
           console.log('Failed to fetch anime list: ', error);
         }
@@ -94,7 +104,7 @@ function ListPage(props) {
           Hôm nay xem gì?
         </h3>
       </div>
-      <AnimeList data={animeList} />
+      <AnimeList data={animeList1} />
       <div style={{ width: '100%', borderBottom: '1px solid grey' }}>
         <h3
           style={{
@@ -110,7 +120,7 @@ function ListPage(props) {
           Xem nhiều trong ngày
         </h3>
       </div>
-      <AnimeList data={animeList} />
+      <AnimeList data={animeList2} />
     </div>
   );
 }

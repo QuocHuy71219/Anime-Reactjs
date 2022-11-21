@@ -40,7 +40,7 @@ function DetailPage(props) {
     <div style={{ color: 'white' }}>
       <div style={{ width: '100%', height: '200px' }} className="anime-detail__banner">
         <img
-          src={anime?.banner_image ? anime?.banner_image : imgBanner}
+          src={anime?.trailer.images.maximum_image_url ? anime?.trailer.images.maximum_image_url : imgBanner}
           alt="404"
           style={{ width: '100%', height: '300px', opacity: '0.5' }}
         />
@@ -49,20 +49,20 @@ function DetailPage(props) {
       <div style={{ display: 'flex', flexFlow: 'column nowrap' }} className="anime-detail">
         <div style={{ margin: '100px 0 30px 100px' }}>
           <img
-            src={anime?.cover_image}
-            alt={anime?.titles.en}
+            src={anime?.images.jpg.large_image_url}
+            alt={anime?.title}
             style={{ borderRadius: '10px', height: '370px', width: '250px' }}
           />
-          <div style={{ fontSize: '20px' }}>{anime?.titles.en}</div>
+          <div style={{ fontSize: '20px' }}>{anime?.title}</div>
         </div>
         <div style={{ margin: '100px 100px 0 50px ' }} className="anime-description">
           <div style={{ fontSize: '50px', fontWeight: 'bold' }} className="anime-description__title">
-            {anime?.titles.en}
+            {anime?.title}
           </div>
           <div
             style={{ fontSize: '20px' }}
             className="anime-description__content"
-            dangerouslySetInnerHTML={{ __html: anime?.descriptions.en }}
+            dangerouslySetInnerHTML={{ __html: anime?.synopsis }}
           ></div>
         </div>
       </div>

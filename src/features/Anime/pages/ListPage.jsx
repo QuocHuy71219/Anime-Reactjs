@@ -1,8 +1,7 @@
 // import { Box, Container, Grid, Paper } from '@material-ui/core';
-// import { convertLength } from '@mui/material/styles/cssUtils';
-//import { makeStyles } from '@material-ui/core';
+
 import animeAPI from 'api/animeAPI';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AnimeList from '../components/AnimeList';
 
 ListPage.propTypes = {};
@@ -40,14 +39,9 @@ function ListPage(props) {
     () =>
       (async () => {
         try {
-          const result1 = [];
-          for (let i = 2; i < 5; i++) {
-            const data = await animeAPI.getAnimelist(i, 20);
-            const result = data.data;
-            result1.push(...result);
-          }
-
-          setAnimeList(result1);
+          const data = await animeAPI.getAnimePopularity(1, 20);
+          const result = data.data;
+          setAnimeList(result);
         } catch (error) {
           console.log('Failed to fetch anime list: ', error);
         }
@@ -83,7 +77,7 @@ function ListPage(props) {
         </h3>
       </div>
 
-      <AnimeList data={animeList.slice(0, 20)} />
+      <AnimeList data={animeList} />
       <div style={{ width: '100%', borderBottom: '1px solid grey' }}>
         <h3
           style={{
@@ -99,7 +93,7 @@ function ListPage(props) {
           Hôm nay xem gì?
         </h3>
       </div>
-      <AnimeList data={animeList.slice(20, 40)} />
+      <AnimeList data={animeList} />
       <div style={{ width: '100%', borderBottom: '1px solid grey' }}>
         <h3
           style={{
@@ -115,7 +109,7 @@ function ListPage(props) {
           Xem nhiều trong ngày
         </h3>
       </div>
-      <AnimeList data={animeList.slice(40, 60)} />
+      <AnimeList data={animeList} />
     </div>
   );
 }

@@ -17,9 +17,10 @@ function AnimeTopFutures(props) {
     () =>
       (async () => {
         try {
-          const data = await animeAPI.getAnimelist(pagination);
-          const result = data.data.documents;
-          const result1 = data.data.count;
+          const data = await animeAPI.getAnimeTop(pagination);
+          //const result = data.data.documents;
+          const result = data.data;
+          const result1 = data.pagination.items.total;
           //result.sort((a, b) => b.score - a.score);
           setAnimeList(result);
           setPaginationCount(result1);

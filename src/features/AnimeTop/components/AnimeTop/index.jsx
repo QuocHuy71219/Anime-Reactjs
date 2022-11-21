@@ -13,7 +13,7 @@ function AnimeTop({ anime }) {
   const navigate = useNavigate();
 
   const handleChangeUrl = () => {
-    navigate(`/anime/${anime.id}`);
+    navigate(`/anime/${anime.mal_id}`);
   };
 
   return (
@@ -26,13 +26,13 @@ function AnimeTop({ anime }) {
     // </Box>
     <div className="top-anime" onClick={handleChangeUrl}>
       <div className="top-anime__img">
-        <img src={anime.cover_image} alt={anime.titles.en} />
-        <span>Tập {anime.episodes_count}</span>
+        <img src={anime.images.jpg.image_url} alt={anime.title} />
+        <span>Tập {anime.episodes}</span>
         <div className="top-anime__img--icon">
           <PlayCircleOutline style={{ fontSize: '60px' }} />
         </div>
       </div>
-      <div className="top-anime__title">{anime.titles.en}</div>
+      <div className="top-anime__title">{anime.title}</div>
     </div>
   );
 }

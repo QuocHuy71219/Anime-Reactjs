@@ -20,7 +20,7 @@ function AnimeSearch({ anime }) {
   // const q = String(query.get('q'));
 
   const handleChangeUrl = () => {
-    navigate(`/anime/${anime.id}`);
+    navigate(`/anime/${anime.mal_id}`);
   };
 
   return (
@@ -33,13 +33,13 @@ function AnimeSearch({ anime }) {
     // </Box>
     <div className="search-anime" onClick={handleChangeUrl}>
       <div className="search-anime__img">
-        <img src={anime.cover_image} alt={anime.titles.en} />
-        <span>Tập {anime.episodes_count}</span>
+        <img src={anime.images.jpg.image_url} alt={anime.title} />
+        <span>Tập {anime.episodes}</span>
         <div className="search-anime__img--icon">
           <PlayCircleOutline style={{ fontSize: '60px' }} />
         </div>
       </div>
-      <div className="search-anime__title">{anime.titles.en}</div>
+      <div className="search-anime__title">{anime.title}</div>
     </div>
   );
 }

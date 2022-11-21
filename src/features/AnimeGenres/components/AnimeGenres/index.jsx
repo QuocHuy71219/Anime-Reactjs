@@ -13,7 +13,7 @@ function AnimeGenres({ anime }) {
   const navigate = useNavigate();
 
   const handleChangeUrl = () => {
-    navigate(`/anime/${anime.id}`);
+    navigate(`/anime/${anime.mal_id}`);
   };
 
   return (
@@ -26,13 +26,13 @@ function AnimeGenres({ anime }) {
     // </Box>
     <div className="genres-anime" onClick={handleChangeUrl}>
       <div className="genres-anime__img">
-        <img src={anime.cover_image} alt={anime.titles.en} />
-        <span>Tập {anime.episodes_count}</span>
+        <img src={anime.images.jpg.image_url} alt={anime.title} />
+        <span>Tập {anime.episodes}</span>
         <div className="genres-anime__img--icon">
           <PlayCircleOutline style={{ fontSize: '60px' }} />
         </div>
       </div>
-      <div className="genres-anime__title">{anime.titles.en}</div>
+      <div className="genres-anime__title">{anime.title}</div>
     </div>
   );
 }

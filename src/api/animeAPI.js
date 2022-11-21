@@ -5,6 +5,23 @@ const animeAPI = {
   //   return axiosClientAnime.get(url);
   // },
 
+  getAnimePopularity(page, limit) {
+    const url = `/top/anime?type=tv&filter=bypopularity&page=${page}&limit=${limit}`;
+    return axiosClientAnime.get(url);
+  },
+  getAnimeUpcoming() {
+    const url = `/top/anime?&filter=upcoming&page=1&limit=12`;
+    return axiosClientAnime.get(url);
+  },
+  getAnimeAiring() {
+    const url = `/top/anime?type=tv&filter=airing&limit=20`;
+    return axiosClientAnime.get(url);
+  },
+  getAnimeFavorite() {
+    const url = `/top/anime?type=tv&filter=favorite&limit=20`;
+    return axiosClientAnime.get(url);
+  },
+
   getAnimelist(page, limit) {
     const url = `/anime?page=${page}&limit=${limit}`;
     return axiosClientAnime.get(url);

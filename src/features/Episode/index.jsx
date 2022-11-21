@@ -15,9 +15,16 @@ function EpisodeFutures({ animeId = '' }) {
   useEffect(() => {
     try {
       (async () => {
-        const data = await animeAPI.getListAnimeEpisole(animeId);
-        const result = Array.isArray(data.data) ? data.data : data.data.documents;
-        setEpisode(result);
+        const data = await animeAPI.getListAnimeEpisode(animeId, 0);
+        const page = data.pagination.last_visible_page;
+        const result1 = [];
+        for (let i = 1; i <= page; i++) {
+          const data1 = await animeAPI.getListAnimeEpisode(animeId, i);
+          const result = data1.data;
+          result1.push(...result);
+        }
+        setEpisode(result1);
+        // const result = Array.isArray(data.data) ? data.data : data.data.documents;
       })();
     } catch (error) {
       console.log('Fetch api fail ', error);

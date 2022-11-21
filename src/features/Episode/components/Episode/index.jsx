@@ -26,7 +26,7 @@ function Episode({ episode = null }) {
   const classes = useStyles();
 
   const handleChangeUrl = () => {
-    navigate(`/episode/${episode?.number}`, { state: { episodeLink: episode?.video } });
+    navigate(`/episode/${episode?.mal_id}`, { state: { episodeLink: episode?.url } });
   };
   return (
     <div onClick={handleChangeUrl}>
@@ -51,7 +51,7 @@ function Episode({ episode = null }) {
         //   margin: '0 5px 5px 0',
         //   background: '#23232a',
         // }}
-      >{`Tập ${episode?.number}`}</Button>
+      >{`Tập ${episode?.mal_id}`}</Button>
     </div>
   );
 }

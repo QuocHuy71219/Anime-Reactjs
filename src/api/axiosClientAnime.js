@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const axiosClientAnime = axios.create({
-  baseURL: 'https://api.aniapi.com/v1/',
+  //baseURL: 'https://api.aniapi.com/v1/',
+  //baseURL: 'https://kitsu.io/api/edge/',
+  baseURL: 'https://api.jikan.moe/v4/',
 });
 
 //Interceptors

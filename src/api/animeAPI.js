@@ -1,7 +1,17 @@
 import axiosClientAnime from './axiosClientAnime';
 const animeAPI = {
-  getAnimelist(page = 1) {
-    const url = `/anime?sort_fields=score&sort_directions=-1&per_page=18&page=${page}`;
+  // getAnimelist(page = 1) {
+  //   const url = `/anime?sort_fields=score&sort_directions=-1&per_page=18&page=${page}`;
+  //   return axiosClientAnime.get(url);
+  // },
+
+  getAnimelist(page, limit) {
+    const url = `/anime?page=${page}&limit=${limit}`;
+    return axiosClientAnime.get(url);
+  },
+
+  getAnimeTop(page) {
+    const url = `/top/anime?page=${page}&limit=24`;
     return axiosClientAnime.get(url);
   },
 
@@ -11,7 +21,7 @@ const animeAPI = {
   },
 
   getAnimeWidthId(idAnime) {
-    const url = `/anime/${idAnime}`;
+    const url = `/anime/${idAnime}/full`;
     return axiosClientAnime.get(url);
   },
 
@@ -21,12 +31,12 @@ const animeAPI = {
   },
 
   getGenres() {
-    const url = `/resources/1.0/0`;
+    const url = `/genres/anime`;
     return axiosClientAnime.get(url);
   },
 
-  getListAnimeWithGenres(genres) {
-    const url = `/anime?genres=${genres}&nsfw=true`;
+  getListAnimeWithGenres(genres, page) {
+    const url = `/anime?genres=${genres}&page=${page}&limit=24`;
     return axiosClientAnime.get(url);
   },
 
@@ -42,8 +52,8 @@ const animeAPI = {
   //   return axiosClientAnime.get(data);
   // },
 
-  getListAnimeEpisole(idani) {
-    const url = `/episode?anime_id=${idani}&source=dreamsub&locale=it`;
+  getListAnimeEpisode(id, page) {
+    const url = `/anime/${id}/episodes?page=${page}`;
     return axiosClientAnime.get(url);
   },
 
@@ -63,8 +73,8 @@ const animeAPI = {
     return axiosClientAnime.get(data);
   },
 
-  searchAnime(q) {
-    const url = `/anime?per_page=50&page=1&title=${encodeURIComponent(q)}`;
+  searchAnime(q, page) {
+    const url = `/anime?q=${encodeURIComponent(q)}&page=${page}&limit=24`;
     return axiosClientAnime.get(url);
   },
 

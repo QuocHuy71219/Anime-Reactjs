@@ -15,7 +15,7 @@ function Banner(props) {
     () =>
       (async () => {
         try {
-          const data = await animeAPI.getAnimelist(1, 12);
+          const data = await animeAPI.getAnimeUpcoming();
           //const data = await animeAPI.getAnimelist();
           //const result = data.data.documents;
           const result = data.data;

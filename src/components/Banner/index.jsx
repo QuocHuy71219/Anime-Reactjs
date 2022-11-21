@@ -15,8 +15,10 @@ function Banner(props) {
     () =>
       (async () => {
         try {
-          const data = await animeAPI.getAnimelist(12);
-          const result = data.data.documents;
+          const data = await animeAPI.getAnimelist(1, 12);
+          //const data = await animeAPI.getAnimelist();
+          //const result = data.data.documents;
+          const result = data.data;
           setAnimeList(result);
         } catch (error) {
           console.log('Failed to fetch anime list: ', error);
@@ -25,10 +27,9 @@ function Banner(props) {
       })(),
     []
   );
-
-  const handleChangeUrl = () => {
-    const [anime] = [...animeList];
-    navigate(`/anime/${anime.id}`);
+  const handleChangeUrl = (id) => {
+    //const [anime] = [...animeList];
+    navigate(`/anime/${id}`);
   };
 
   return (
@@ -38,15 +39,17 @@ function Banner(props) {
           <SwiperSlide key={idx}>
             <li key={idx}>
               {/* <Anime anime={anime} /> */}
-              <div className="banner" onClick={handleChangeUrl}>
+              <div className="banner" onClick={() => handleChangeUrl(anime.mal_id)}>
                 <div className="banner__img">
-                  <img src={anime.cover_image} alt={anime.titles.en} />
-                  <span>Tập {anime.episodes_count}</span>
+                  {/* <img src={anime.cover_image} alt={anime.titles.en} /> */}
+                  <img src={anime.images.jpg.large_image_url} alt={anime.title} />
+                  {/* <span>Tập {anime.episodes_count}</span> */}
+                  <span>Tập {anime.episodes}</span>
                   <div className="banner__img--icon">
                     <PlayCircleOutline style={{ fontSize: '100px' }} />
                   </div>
                 </div>
-                <div className="banner__title">{anime.titles.en}</div>
+                <div className="banner__title">{anime.title}</div>
               </div>
             </li>
           </SwiperSlide>

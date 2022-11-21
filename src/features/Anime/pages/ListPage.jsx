@@ -19,8 +19,6 @@ function ListPage(props) {
   //const classes = useStyles();
 
   const [animeList, setAnimeList] = useState([]);
-  const [animeList1, setAnimeList1] = useState([]);
-  const [animeList2, setAnimeList2] = useState([]);
 
   //const [loading, setLoading] = useState(true);
   // const [filters, setFilters] = useState(() => ({
@@ -42,17 +40,14 @@ function ListPage(props) {
     () =>
       (async () => {
         try {
-          const [data, data1, data2] = await Promise.all([
-            animeAPI.getAnimelist(5, 20),
-            animeAPI.getAnimelist(10, 20),
-            animeAPI.getAnimelist(15, 20),
-          ]);
-          const result = data.data;
-          const result1 = data1.data;
-          const result2 = data2.data;
-          setAnimeList(result);
-          setAnimeList1(result1);
-          setAnimeList2(result2);
+          const result1 = [];
+          for (let i = 2; i < 5; i++) {
+            const data = await animeAPI.getAnimelist(i, 20);
+            const result = data.data;
+            result1.push(...result);
+          }
+
+          setAnimeList(result1);
         } catch (error) {
           console.log('Failed to fetch anime list: ', error);
         }
@@ -88,7 +83,7 @@ function ListPage(props) {
         </h3>
       </div>
 
-      <AnimeList data={animeList} />
+      <AnimeList data={animeList.slice(0, 20)} />
       <div style={{ width: '100%', borderBottom: '1px solid grey' }}>
         <h3
           style={{
@@ -104,7 +99,7 @@ function ListPage(props) {
           Hôm nay xem gì?
         </h3>
       </div>
-      <AnimeList data={animeList1} />
+      <AnimeList data={animeList.slice(20, 40)} />
       <div style={{ width: '100%', borderBottom: '1px solid grey' }}>
         <h3
           style={{
@@ -120,7 +115,7 @@ function ListPage(props) {
           Xem nhiều trong ngày
         </h3>
       </div>
-      <AnimeList data={animeList2} />
+      <AnimeList data={animeList.slice(40, 60)} />
     </div>
   );
 }

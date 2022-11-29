@@ -61,8 +61,9 @@ function CommentForm(props) {
 
   return (
     <div>
+      <br />
       {!isLoggedIn && <div>Vui lòng đăng nhập để bình luận</div>}
-
+      <br />
       {isLoggedIn && (
         <div className={classes.root}>
           <Typography className={classes.title} component="h3" variant="h5">

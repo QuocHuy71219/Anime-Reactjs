@@ -16,14 +16,15 @@ function EpisodeFutures({ animeId = '' }) {
     try {
       (async () => {
         const data = await animeAPI.getListAnimeEpisode(animeId, 0);
-        const page = data.pagination.last_visible_page;
-        const result1 = [];
-        for (let i = 1; i <= page; i++) {
-          const data1 = await animeAPI.getListAnimeEpisode(animeId, i);
-          const result = data1.data;
-          result1.push(...result);
-        }
-        setEpisode(result1);
+        const result = data.data;
+        // const page = data.pagination.last_visible_page;
+        // const result1 = [];
+        // for (let i = 1; i <= page; i++) {
+        //   const data1 = await animeAPI.getListAnimeEpisode(animeId, i);
+        //   const result = data1.data;
+        //   result1.push(...result);
+        // }
+        setEpisode(result);
         // const result = Array.isArray(data.data) ? data.data : data.data.documents;
       })();
     } catch (error) {
